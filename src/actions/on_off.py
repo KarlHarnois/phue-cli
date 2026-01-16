@@ -7,7 +7,10 @@ class OnOff(Action):
 
     def run(self, bridge, target, brightness):
         target.set_on(bridge, self.on)
+
         if brightness is not None:
             target.set_brightness(bridge, brightness)
+
         state = "on" if self.on else "off"
+
         return f"OK: {target.describe()} action={state} bri={brightness}"
