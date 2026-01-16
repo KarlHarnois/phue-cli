@@ -1,7 +1,7 @@
 from src.app_error import AppError
-from src.on_off import OnOff
-from src.register import Register
-from src.toggle import Toggle
+from src.actions.on_off import OnOff
+from src.actions.register import Register
+from src.actions.toggle import Toggle
 
 
 class ActionRouter:

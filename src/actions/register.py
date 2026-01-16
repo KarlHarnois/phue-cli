@@ -1,4 +1,4 @@
-from src.action import Action
+from src.actions.action import Action
 
 
 class Register(Action):
