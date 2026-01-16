@@ -1,6 +1,6 @@
 from src.app_error import AppError
-from src.group_target import GroupTarget
-from src.light_target import LightTarget
+from src.targets.group_target import GroupTarget
+from src.targets.light_target import LightTarget
 
 
 class TargetFactory:

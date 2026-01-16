@@ -1,5 +1,5 @@
 from src.app import App
-from src.actions.action_router import ActionRouter
+from src.action_router import ActionRouter
 from src.env import Env
 from src.hue_controller import HueController
 from src.settings_loader import SettingsLoader
