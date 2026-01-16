@@ -13,6 +13,6 @@ class App:
             result = self.controller.execute(settings)
             print(result)
             return 0
-        except AppError as e:
-            print(str(e), file=sys.stderr)
+        except AppError as error:
+            print(str(error), file=sys.stderr)
             return 2
