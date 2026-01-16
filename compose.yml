@@ -1,0 +1,11 @@
+services:
+  phue:
+    build: .
+    image: phue
+    network_mode: host
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: ["python", "/app/main.py"]

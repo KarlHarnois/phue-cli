@@ -1,29 +1,32 @@
-IMAGE = phue
-RUN = docker run --rm --net=host --env-file .env
+SERVICE = phue
+DC = docker compose
 
-.PHONY: build register run on off toggle shell repl
+RUN = $(DC) run --rm $(SERVICE)
+RUN_IT = $(DC) run --rm -it $(SERVICE)
+
+.PHONY: build register run on off toggle shell console
 
 build:
-	docker build -t $(IMAGE) .
+	$(DC) build
 
 register:
-	$(RUN) -e HUE_ACTION=register $(IMAGE)
+	$(DC) run --rm -e HUE_ACTION=register $(SERVICE)
 
 run:
-	$(RUN) $(IMAGE)
+	$(RUN)
 
 on:
-	$(RUN) -e HUE_ACTION=on $(IMAGE)
+	$(DC) run --rm -e HUE_ACTION=on $(SERVICE)
 
 off:
-	$(RUN) -e HUE_ACTION=off $(IMAGE)
+	$(DC) run --rm -e HUE_ACTION=off $(SERVICE)
 
 toggle:
-	$(RUN) -e HUE_ACTION=toggle $(IMAGE)
+	$(DC) run --rm -e HUE_ACTION=toggle $(SERVICE)
 
 shell:
-	$(RUN) -it --entrypoint sh $(IMAGE)
+	$(DC) run --rm -it --entrypoint sh $(SERVICE)
 
 console:
-	$(RUN) -it --entrypoint python $(IMAGE) -i -c \
+	$(DC) run --rm -it --entrypoint python $(SERVICE) -i -c \
 	"from phue import Bridge; import os; b = Bridge(os.environ['HUE_BRIDGE_IP'], username=os.environ['HUE_USERNAME'])"
