@@ -7,6 +7,8 @@ class TargetFactory:
     def create(self, settings):
         if settings.group_name:
             return GroupTarget(settings.group_name)
+
         if settings.light_name:
             return LightTarget(settings.light_name)
+
         raise AppError("No target configured.")

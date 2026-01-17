@@ -15,6 +15,7 @@ class HueController:
         action = self.action_router.resolve(settings.action)
 
         target = None
+
         if settings.action != "register":
             target = self.target_factory.create(settings)
 
