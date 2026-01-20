@@ -1,7 +1,7 @@
 SERVICE = phue
 RUN = docker compose run --rm -e
 
-.PHONY: build register run on off toggle shell console
+.PHONY: build register run on off toggle shell console discover
 
 build:
 	docker compose build
@@ -24,3 +24,6 @@ shell:
 console:
 	$(RUN) -it --entrypoint python $(SERVICE) -i -c \
 	"from phue import Bridge; import os; b = Bridge(os.environ['HUE_BRIDGE_IP'], username=os.environ['HUE_USERNAME'])"
+
+discover:
+	docker compose run --rm --entrypoint python $(SERVICE) bin/discover.py
